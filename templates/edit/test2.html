@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paramètres du Profil</title>
+    <style>
+      @charset "UTF-8";
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #000;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #fff;
+        position: relative;
+      }
+
+      .login-container {
+        position: relative;
+        background-color: rgba(255, 140, 0, 0.9);
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(255, 140, 0, 0.3);
+        text-align: center;
+        width: 600px;
+        z-index: 1;
+        backdrop-filter: blur(8px);
+      }
+
+      .profile-section {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid orange;
+        margin: 0 auto 20px;
+        display: block;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .action-button {
+        background-color: #000;
+        color: orange;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px 0;
+        width: 100%;
+        text-transform: uppercase;
+      }
+
+      .action-button:hover {
+        background-color: #333;
+      }
+
+      /* Modal Styles */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background-color: rgba(255, 140, 0, 0.9);
+        padding: 30px;
+        border-radius: 20px;
+        width: 400px;
+        text-align: center;
+      }
+
+      .modal-close {
+        color: #000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .modal-actions button {
+        width: auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #uploadProfileImage {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      #uploadProfileImage:hover {
+        background-color: #45a049;
+      }
+
+      #removeProfileImage {
+        background-color: #f44336;
+        color: white;
+      }
+
+      #removeProfileImage:hover {
+        background-color: #e53935;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Paramètres du Profil</h2>
+
+      <!-- Section Informations Utilisateur -->
+      <div class="profile-section">
+        <h3>Informations Personnelles</h3>
+        <form id="userInfoForm">
+          <div class="input-group">
+            <input type="text" id="Username_edit" placeholder="Nom d'utilisateur" required />
+          </div>
+          <div class="input-group">
+            <input type="text" id="FirstName_edit" placeholder="Prénom" required />
+          </div>
+          <div class="input-group">
+            <input type="text" id="LastName_edit" placeholder="Nom" required />
+          </div>
+          <div class="input-group">
+            <input type="email" id="email_edit" placeholder="Email" required />
+          </div>
+          <button type="button" id="updateUserInfoBtn" class="action-button">
+            Mettre à jour les informations
+          </button>
+        </form>
+      </div>
+
+      <!-- Section Photo de Profil -->
+      <div class="profile-section">
+        <h3>Photo de Profil</h3>
+        <img
+          id="profilePhoto"
+          src="/api/placeholder/150/150"
+          class="profile-photo"
+        />
+        <button id="openImageModal" class="action-button">
+          Changer la photo de profil
+        </button>
+      </div>
+
+      <!-- Section Sécurité -->
+      <div class="profile-section">
+        <h3>Sécurité</h3>
+        <div class="input-group">
+          <input type="password" id="Password_edit" placeholder="Nouveau mot de passe" />
+        </div>
+        <div class="input-group">
+          <input type="password" id="Confirm_Password_edit" placeholder="Confirmer le mot de passe" />
+        </div>
+        <button id="updatePasswordBtn" class="action-button">
+          Mettre à jour le mot de passe
+        </button>
+        <button id="openTwoFactorModal" class="action-button">
+          Configurer l'authentification à deux facteurs
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Photo de Profil -->
+    <div id="imageUploadModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Modifier la Photo de Profil</h2>
+        <div class="modal-description">
+          <p>Choisissez une nouvelle photo de profil</p>
+          <input 
+            type="file" 
+            id="photoUpload" 
+            accept="image/*" 
+            style="margin: 20px 0;"
+          />
+        </div>
+        <div class="modal-actions">
+          <button id="uploadProfileImage">Télécharger</button>
+          <button id="removeProfileImage">Supprimer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2FA -->
+    <div id="twoFactorModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Authentification à Deux Facteurs (2FA)</h2>
+        <div class="modal-description">
+          <p>
+            L'authentification à deux facteurs ajoute une couche supplémentaire
+            de sécurité à votre compte.
+          </p>
+        </div>
+        <div class="modal-actions">
+          <button id="activateTwoFactor">Activer</button>
+          <button id="deactivateTwoFactor">Désactiver</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Éléments pour la photo de profil
+        const profilePhoto = document.getElementById("profilePhoto");
+        const openImageModal = document.getElementById("openImageModal");
+        const imageUploadModal = document.getElementById("imageUploadModal");
+        const imageModalClose = imageUploadModal.querySelector(".modal-close");
+        const photoUpload = document.getElementById("photoUpload");
+        const uploadProfileImage = document.getElementById("uploadProfileImage");
+        const removeProfileImage = document.getElementById("removeProfileImage");
+
+        // Éléments pour les informations utilisateur
+        const userInfoForm = document.getElementById("userInfoForm");
+        const updateUserInfoBtn = document.getElementById("updateUserInfoBtn");
+
+        // Éléments pour le mot de passe
+        const updatePasswordBtn = document.getElementById("updatePasswordBtn");
+
+        // Éléments pour 2FA
+        const openTwoFactorModal = document.getElementById("openTwoFactorModal");
+        const twoFactorModal = document.getElementById("twoFactorModal");
+        const twoFactorModalClose = twoFactorModal.querySelector(".modal-close");
+        const activateTwoFactor = document.getElementById("activateTwoFactor");
+        const deactivateTwoFactor = document.getElementById("deactivateTwoFactor");
+
+        // Gestion de la photo de profil
+        openImageModal.addEventListener("click", () => {
+          imageUploadModal.style.display = "flex";
+        });
+
+        imageModalClose.addEventListener("click", () => {
+          imageUploadModal.style.display = "none";
+        });
+
+        uploadProfileImage.addEventListener("click", () => {
+          const file = photoUpload.files[0];
+          if (file) {
+            const formData = new FormData();
+            formData.append('profileImage', file);
+
+            fetch('/api/upload-profile-image', {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                profilePhoto.src = data.imageUrl;
+                alert('Photo de profil mise à jour avec succès !');
+                imageUploadModal.style.display = "none";
+              } else {
+                alert('Erreur lors du téléchargement de la photo');
+              }
+            })
+            .catch(error => {
+              console.error('Erreur:', error);
+              alert('Une erreur est survenue');
+            });
+          } else {
+            alert('Veuillez sélectionner une image');
+          }
+        });
+
+        removeProfileImage.addEventListener("click", () => {
+          fetch('/api/remove-profile-image', {
+            method: 'POST'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              profilePhoto.src = "/api/placeholder/150/150";
+              alert('Photo de profil supprimée avec succès !');
+              imageUploadModal.style.display = "none";
+            } else {
+              alert('Erreur lors de la suppression de la photo');
+            }
+          })
+          .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue');
+          });
+        });
+
+        // Mise à jour des informations utilisateur
+        updateUserInfoBtn.addEventListener("click", () => {
+          const userData = {
+            username: document.getElementById("Username_edit").value,
+            firstName: document.getElementById("FirstName_edit").value,
+            lastName: document.getElementById("LastName_edit").value,
+            email: document.getElementById("email_edit").value
+          };
+
+          fetch('/api/update-user-info', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert('Informations mises à jour avec succès !');
+            } else {
+              alert('Erreur lors de la mise à jour des informations');
+            }
+          })
+          .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue');
+          });
+        });
+
+        // Mise à jour du mot de passe
+        updatePasswordBtn.addEventListener("click", () => {
+          const password = document.getElementById("Password_edit").value;
+          const confirmPassword = document.getElementById("Confirm_Password_edit").value;
+
+          if (password !== confirmPassword) {
+            alert('Les mots de passe ne correspondent pas');
+            return;
+          }
+
+          fetch('/api/update-password', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert('Mot de passe mis à jour avec succès !');
+              document.getElementById("Password_edit").value = '';
+              document.getElementById("Confirm_Password_edit").value = '';
+            } else {
+              alert('Erreur lors de la mise à jour du mot de passe');
+            }
+          })
+          .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue');
+          });
+        });
+
+        // Gestion de la 2FA
+        openTwoFactorModal.addEventListener("click", () => {
+          twoFactorModal.style.display = "flex";
+        });
+
+        twoFactorModalClose.addEventListener("click", () => {
+          twoFactorModal.style.display = "none";
+        });
+
+        activateTwoFactor.addEventListener("click", () => {
+          fetch('/api/activate-2fa', {
+            method: 'POST'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert("Authentification à deux facteurs activée");
+            } else {
+              alert("Échec de l'activation de la 2FA");
+            }
+            twoFactorModal.style.display = "none";
+          })
+          .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue');
+          });
+        });
+
+        deactivateTwoFactor.addEventListener("click", () => {
+          fetch('/api/deactivate-2fa', {
+            method: 'POST'
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert("Authentification à deux facteurs désactivée");
+            } else {
+              alert("Échec de la désactivation de la 2FA");
+            }
+            twoFactorModal.style.display = "none";
+          })
+          .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

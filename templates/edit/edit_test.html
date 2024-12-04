@@ -1,0 +1,55 @@
+<div class="login-container">
+  <h2>Paramètres du Profil</h2>
+  <div class="photo-upload-container">
+    <img
+      id="profilePhoto"
+      src="/api/placeholder/150/150"
+      class="profile-photo"
+    />
+    <input
+      type="file"
+      id="photoUpload"
+      accept="image/*"
+      class="photo-upload-input"
+    />
+    <label for="photoUpload" class="photo-upload-label">Changer Photo</label>
+  </div>
+
+  <form id="profileForm">
+    <input
+      type="text"
+      id="Username_edit"
+      placeholder="Nom d'utilisateur"
+      required
+    />
+    <input type="text" id="FirstName_edit" placeholder="Prénom" required />
+    <input type="text" id="LastName_edit" placeholder="Nom" required />
+    <input type="email" id="email_edit" placeholder="Email" required />
+    <input type="password" id="Password_edit" placeholder="Mot de passe" />
+    <input
+      type="password"
+      id="Confirm_Password_edit"
+      placeholder="Confirmer le mot de passe"
+    />
+
+    <button id="openTwoFactorModal" type="button">Configurer 2FA</button>
+
+    <!-- Modal 2FA -->
+    <div id="twoFactorModal" class="two-factor-modal">
+      <div class="two-factor-modal-content">
+        <!-- Bouton de fermeture (X) -->
+        <h2>Authentification à Deux Facteurs (2FA)</h2>
+        <div class="two-factor-description">
+          <p>
+            L'authentification à deux facteurs ajoute une couche supplémentaire
+            de sécurité à votre compte.
+          </p>
+        </div>
+        <div class="two-factor-actions">
+          <button id="activateTwoFactor">Activer</button>
+          <button id="deactivateTwoFactor">Désactiver</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
