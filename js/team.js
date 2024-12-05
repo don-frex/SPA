@@ -1,3 +1,8 @@
+
+
+
+const team = () => {
+ 
 var swiper = new Swiper(".swiper", {
 	grabCursor: true,
 	initialSlide: 4,
@@ -18,3 +23,8 @@ var swiper = new Swiper(".swiper", {
 	  },
 	},
   })
+ 
+ 
+};
+
+export default team;

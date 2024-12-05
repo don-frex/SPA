@@ -5,6 +5,8 @@ import initResetPassword from "./reset_password.js";
 import initTwoFA from "./twoFA.js";
 import initProfile from "./profile.js";
 import setup from "./edit.js";
+import custom from "./custom.js";
+import team from "./team.js";
 
 
 // import initVerifying from "./verify.js";
@@ -266,10 +268,15 @@ const urlLocationHandler = async () => {
   } else if (pageSelected.at(-1) === "twoFA.html") {
     initTwoFA();
   } else if (pageSelected.at(-1) === "profile.html") {
+	custom();
     initProfile();
   } else if (pageSelected.at(-1) === "edit.html") {
     setup();
   } 
+  else if (pageSelected.at(-1) === "home.html") {
+    custom();
+	team();
+  }
 };
 
 window.onpopstate = urlLocationHandler;

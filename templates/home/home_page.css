@@ -10,22 +10,6 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
-/* .content {
-    position: relative; 
-    z-index: 0;
-}
-
-.background-circles {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.2), transparent 70%);
-    z-index: -1; 
-}  */
-
-
 .clearfix:after {
   content: ".";
   display: block;
@@ -761,7 +745,7 @@ Banner Style
 */
 
 .main-banner {
-  background-image: url(../../images/banner.png);
+  background-image: url(../images/banner.png);
   background-position: center center;
   background-size: cover;
   min-height: 380px;
@@ -1532,11 +1516,6 @@ Profile Style
   border-radius: 23px;
   padding: 30px;
   background-color: #1f2122;
-  transition: box-shadow 0.3s ease;
-}
-
-.main-profile:hover {
-  box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.6);
 }
 
 .main-profile .main-info span {
