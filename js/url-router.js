@@ -7,6 +7,7 @@ import initProfile from "./profile.js";
 import setup from "./edit.js";
 import custom from "./custom.js";
 import team from "./team.js";
+import FriendManager from './script.js';
 
 
 // import initVerifying from "./verify.js";
@@ -87,6 +88,11 @@ const urlRoutes = {
     title: "home",
     description: "",
   },
+  "/friend":{
+    template: "/templates/friendpage/friend.html",
+    title: "friend",
+    description: "",
+  }
 };
 
 // const notAuthRoutes = {
@@ -276,6 +282,9 @@ const urlLocationHandler = async () => {
   else if (pageSelected.at(-1) === "home.html") {
     custom();
 	team();
+  }
+  else if(pageSelected.at(-1) === "friend.html"){
+    FriendManager.initialize();
   }
 };
 

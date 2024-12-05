@@ -901,9 +901,9 @@ Gaming Library Style
   width: 17%;
 }
 
-.gaming-library .item ul li:first-child {
+/* .gaming-library .item ul li:first-child {
   width: 110px;
-}
+} */
 
 .gaming-library .item ul li {
   width: 15%;
@@ -1019,9 +1019,9 @@ Featured Games Style
   font-size: 14px;
 }
 
-.featured-games .item ul li:first-child i {
+/* .featured-games .item ul li:first-child i {
   color: yellow;
-}
+} */
 
 .featured-games .item ul li i {
   color: #ecb460;
@@ -1338,9 +1338,9 @@ Game Details Style
   margin-bottom: 3px;
 }
 
-.game-details .content .left-info ul li:first-child i {
+/* .game-details .content .left-info ul li:first-child i {
   color: yellow;
-}
+} */
 
 .game-details .content .left-info ul li i {
   color: #ecb460;
@@ -1366,9 +1366,9 @@ Game Details Style
   margin-bottom: 12px;
 }
 
-.game-details .content .right-info ul li:first-child i {
+/* .game-details .content .right-info ul li:first-child i {
   color: yellow;
-} 
+}  */
 
 .game-details .content .right-info ul li i {
   color: #ecb460;
@@ -1433,9 +1433,9 @@ Other Related Style
   margin-bottom: 3px;
 }
 
-.other-games ul li:first-child i {
+/* .other-games ul li:first-child i {
   color: yellow;
-}
+} */
 
 .other-games ul li i {
   color: #ecb460;
