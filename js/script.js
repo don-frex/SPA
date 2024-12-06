@@ -190,7 +190,7 @@ const FriendManager = (() => {
   
     // Main function to initialize the friend manager
     const initialize = async () => {
-      toggleBtn = document.querySelector(".toggle-btn");
+      toggleBtn = document.querySelector(".button");
       userListContainer = document.getElementById("user-list");
       searchInput = document.getElementById("search-input");
   
@@ -207,7 +207,7 @@ const FriendManager = (() => {
         } else {
           await fetchFriendRequests();
         }
-        toggleBtn.textContent = currentMode === "users" ? "Switch to Friend Requests" : "Switch to Users";
+        toggleBtn.textContent = currentMode === "users" ? "Switch to Friend Requests" : "Switch to Users Requests";
       });
   
       searchInput.addEventListener("input", event => {
@@ -226,4 +226,3 @@ const FriendManager = (() => {
   })();
   
   export default FriendManager;
-  

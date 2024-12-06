@@ -2,16 +2,11 @@
 /* Background Styling */
 
 .background-circles {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, rgba(255, 140, 0, 0.3), transparent 80%);
-    border-radius: 50%;
-    animation: pulse 4s infinite;
-    z-index: 0;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures it takes the full height of the viewport */
+    position: relative;
 }
 
 @keyframes pulse {
@@ -26,22 +21,29 @@
 /* Centered container-friend */
 .container-friend {
     position: relative;
-    background-color: rgba(255, 140, 0, 0.9); /* Vibrant orange */
+    background-color: #1f2122; /* Vibrant orange */
     padding: 70px;
-    border-radius: 30px;
+    border-radius: 23px;
     box-shadow: 0 15px 40px rgba(255, 140, 0, 0.6);
     text-align: center;
     width: 98%; /* Full width */
     max-width: 2000px; /* Increased maximum width */
     z-index: 1;
     backdrop-filter: blur(12px);
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.3s ease;
+}
+
+.container-friend:hover {
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.6);
 }
 
 /* Header */
 .container-friend h2 {
+	font-family: 'Poppins', sans-serif;
     margin-bottom: 40px;
     font-size: 34px;
-    color: #000;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -132,17 +134,18 @@
 
 /* Search Input */
 #search-input {
-    padding: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    font-size: 20px;
-    width: 98%; /* Full width */
-    max-width: 1800px; /* Increased maximum width */
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-    outline: none;
-    margin-bottom: 30px;
-    transition: all 0.3s ease-in-out;
+    padding: 4px;
+  	border: 3px solid rgba(255, 255, 255, 0.8);
+  	border-radius: 15px;
+  	font-size: 19px;
+  	width: 74%;
+  	max-width: 1800px;
+  	background: rgba(255, 255, 255, 0.9);
+  	color: #000;
+  	outline: none;
+  	margin-bottom: 42px;
+  	transition: all 0.3s ease-in-out;
+  	margin-top: 10%;
 }
 
 #search-input:focus {
