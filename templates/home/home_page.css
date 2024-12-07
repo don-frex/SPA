@@ -676,9 +676,9 @@ Header Style
   .background-header.header-sticky .nav {
     margin-top: 70px !important;
   }
-  .header-area .main-nav .nav li:first-child {
+  /* .header-area .main-nav .nav li:first-child {
     border-top: 1px solid #eee;
-  }
+  } */
   .header-area .main-nav .nav li {
     width: 100%;
     background: #fff;
@@ -840,9 +840,9 @@ Most Popular Style
   font-size: 14px;
 }
 
-.most-popular .item ul li:first-child i {
+/* .most-popular .item ul li:first-child i {
   color: yellow;
-}
+} */
 
 .most-popular .item ul li i {
   color: #ecb460;
@@ -1643,7 +1643,7 @@ body {
     font-size: 35px;
   }
   .gaming-library .item ul li,
-  .gaming-library .item ul li:first-child,
+  .gaming-library .item ul li,
   .gaming-library .item ul li {
     width: 100% !important;
     text-align: center !important;

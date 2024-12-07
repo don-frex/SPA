@@ -16,18 +16,26 @@
 			  <div class="col-12">
 				 <nav class="main-nav">
 					<!-- ***** Logo Start ***** -->
-					<a href="index.html" class="logo">
+					<a href="/home" class="logo">
 					<img src="images/TR-logo.png" alt="">
 					</a>
 					<!-- ***** Logo End ***** -->
+					<!-- ***** Search End ***** -->
+					<div class="search-input">
+						<form id="search" action="#">
+						   <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+						   <!-- <i class="fa fa-search"></i> -->
+						</form>
+					 </div>
+					 <!-- ***** Search End ***** -->
 					<!-- ***** Menu Start ***** -->
 					<ul class="nav">
-					   <li><a href="index.html" class="active">Home <img src="images/home.png" alt=""></a></li>
-					   <li><a href="Message.html">Messages <img src="images/message.png" alt=""></a></li>
+					   <li><a href="/home" class="active">Home <img src="images/home.png" alt=""></a></li>
+					   <li><a href="/message">Messages <img src="images/message.png" alt=""></a></li>
 					   <li><a href="/friend">Friends <img src="images/friends-icon.png" alt=""></a></li>
-					   <li><a href="Message.html">Settings <img src="images/settings.png" alt=""></a></li>
-					   <li><a href="Message.html">Log out <img src="images/logout.png" alt=""></a></li>
-					   <li><a href="profile.html">Profile <img src="images/profile-header.jpg" alt=""></a></li>
+					   <li><a href="/edit">Settings <img src="images/settings.png" alt=""></a></li>
+					   <li><a href="/signin">Log out <img src="images/logout.png" alt=""></a></li>
+					   <li><a href="/profile">Profile <img src="images/profile-header.jpg" alt=""></a></li>
 					</ul>
 					<a class='menu-trigger'>
 					<span>Menu</span>
@@ -39,7 +47,7 @@
 		</div>
 	 </header>
 	 <!-- ***** Header Area End ***** -->
-	 <div class="container">
+	 <div class="container" style="padding-top: 120px;">
 		<div class="row">
 		   <div class="col-lg-12">
 			  <div class="page-content">
@@ -134,6 +142,28 @@
 					</div>
 				 </div>
 				 <!-- ***** Banner End ***** -->
+				 <!-- Match History Section Start -->
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="gaming-library">
+						<h3>Match History</h3>
+						<table class="match-history-table">
+						<thead>
+							<tr>
+							<th>Date</th>
+							<th>Opponent</th>
+							<th>Result</th>
+							<th>Score</th>
+							</tr>
+						</thead>
+						<tbody id="matchHistoryTable">
+							<!-- Match history entries will be inserted here -->
+						</tbody>
+						</table>
+					</div>
+					</div>
+				</div>
+				<!-- Match History Section End -->
 			  </div>
 		   </div>
 		</div>

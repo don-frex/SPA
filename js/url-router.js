@@ -8,6 +8,7 @@ import setup from "./edit.js";
 import custom from "./custom.js";
 import team from "./team.js";
 import FriendManager from './script.js';
+import initMtachHistory from './match_history.js'
 
 
 // import initVerifying from "./verify.js";
@@ -276,6 +277,7 @@ const urlLocationHandler = async () => {
   } else if (pageSelected.at(-1) === "profile.html") {
 	custom();
     initProfile();
+	initMtachHistory();
   } else if (pageSelected.at(-1) === "edit.html") {
     setup();
   } 
