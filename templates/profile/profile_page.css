@@ -4,6 +4,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
 figure, header, nav, section, article, aside, footer, figcaption {
+	
   margin: 0;
   padding: 0;
   border: 0;
@@ -97,7 +98,7 @@ body {
 }
 
 body .page-content {
-  margin-top: 110px;
+  /* margin-top: 450px; */
   background-color: #feab10;
   /* background-color: #27292a; */
   padding: 60px;
@@ -320,17 +321,19 @@ Header Style
 }
 
 .header-area {
-  background-color: transparent;
-  position: absolute;
-  height: 70px;
-  top: 15px;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  -webkit-transition: all .5s ease 0s;
-  -moz-transition: all .5s ease 0s;
-  -o-transition: all .5s ease 0s;
-  transition: all .5s ease 0s;
+	background-color: transparent;
+	/* position: absolute; */
+	position: fixed;
+	width: 100%;
+	/* height: 70px; */
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
 }
 
 .header-area .main-nav {

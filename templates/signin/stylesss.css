@@ -1,5 +1,5 @@
 @charset "UTF-8";
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ body {
   height: 100vh;
   color: #fff;
   position: relative;
-}
+} */
 
 .typing {
   color: #000;

@@ -46,6 +46,8 @@ header, nav, section, article, aside, footer, hgroup {
 }
 
 html, body {
+	height: 100%;
+    overflow-y: auto;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   background-color: #1e1e1e;
@@ -97,7 +99,7 @@ body {
 }
 
 body .page-content {
-  margin-top: 110px;
+  /* margin-top: 110px; */
   background-color: #feab10;
   /* background-color: #27292a; */
   padding: 60px;
@@ -320,17 +322,19 @@ Header Style
 }
 
 .header-area {
-  background-color: transparent;
-  position: absolute;
-  height: 70px;
-  top: 15px;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  -webkit-transition: all .5s ease 0s;
-  -moz-transition: all .5s ease 0s;
-  -o-transition: all .5s ease 0s;
-  transition: all .5s ease 0s;
+	background-color: transparent;
+	/* position: absolute; */
+	position: fixed;
+	width: 100%;
+	height: 70px;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	-webkit-transition: all .5s ease 0s;
+	-moz-transition: all .5s ease 0s;
+	-o-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
 }
 
 .header-area .main-nav {
